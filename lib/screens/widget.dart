@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../cart_provider.dart';
-import '../item_model.dart';
+import '../providers/cart_provider.dart';
+import '../models/item_model.dart';
 
 class ItemWidget extends StatelessWidget {
   const ItemWidget({super.key, required this.item, this.isCartItem = false});

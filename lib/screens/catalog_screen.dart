@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:test_provider/screens/widget.dart';
 
 import 'cart_screen.dart';
-import 'items_list.dart';
+import '../models/items_list.dart';
 
 class CatalogScreen extends StatelessWidget {
   const CatalogScreen({super.key});

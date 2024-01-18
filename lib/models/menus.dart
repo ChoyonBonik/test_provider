@@ -1,17 +1,38 @@
+// To parse this JSON data, do
+//
+//     final menu = menuFromJson(jsonString);
+
+import 'package:meta/meta.dart';
 import 'dart:convert';
 
-List<Menu> menuFromJson(String str) => List<Menu>.from(json.decode(str).map((x) => Menu.fromJson(x)));
+Menus menuFromJson(String str) => Menus.fromJson(json.decode(str));
 
-String menuToJson(List<Menu> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String menuToJson(Menus data) => json.encode(data.toJson());
 
-class Menu {
+class Menus {
+  final List<Datum> data;
+
+  Menus({
+    required this.data,
+  });
+
+  factory Menus.fromJson(Map<String, dynamic> json) => Menus(
+    data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "data": List<dynamic>.from(data.map((x) => x.toJson())),
+  };
+}
+
+class Datum {
   final int menuId;
   final String header;
   final bool child;
   final String logo;
   final List<SubMenu> subMenu;
 
-  Menu({
+  Datum({
     required this.menuId,
     required this.header,
     required this.child,
@@ -19,7 +40,7 @@ class Menu {
     required this.subMenu,
   });
 
-  factory Menu.fromJson(Map<String, dynamic> json) => Menu(
+  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
     menuId: json["menuId"],
     header: json["header"],
     child: json["child"],

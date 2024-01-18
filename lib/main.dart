@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:test_provider/providers/menu_provider.dart';
 import 'package:test_provider/screens/cart_screen.dart';
 import 'package:test_provider/screens/catalog_screen.dart';
+import 'package:test_provider/screens/home_page.dart';
 
-import 'cart_provider.dart';
+import 'providers/cart_provider.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (context)=> CartProvider(),
-      child: const MyApp(),
-    )
-  );
+      const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -19,18 +17,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return ChangeNotifierProvider(
+      create: (context) => MenuProvider(),
+      child: MaterialApp(
+        title: 'Provider API Call',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        debugShowCheckedModeBanner: false,
+        home: HomePage(),
       ),
-      debugShowCheckedModeBanner: false,
-     initialRoute: "/products",
-      routes: {
-        "/products": (context) => CatalogScreen(),
-        "/cart": (context) => CartScreen(),
-      },
     );
   }
-}
+  }
+

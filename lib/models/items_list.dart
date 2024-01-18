@@ -1,4 +1,4 @@
-import '../item_model.dart';
+import 'item_model.dart';
 
 final List<Item> catalog = [
   Item(name: "Chocolate", price: 10),
